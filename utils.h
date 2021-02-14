@@ -1,0 +1,23 @@
+
+#ifndef DIEGOCONCETTI104936_UTILS_H
+#define DIEGOCONCETTI104936_UTILS_H
+
+#endif //DIEGOCONCETTI104936_UTILS_H
+
+char *prepareMsg(char *mex, char *mancante, char *speciale, char *alfa);
+
+void eliminaRipetizioni(char *string);
+
+void eliminaSpazi(char string[]);
+
+void generaMat(char matrice[][5], char *chiave, char *alfa);
+
+void checkMancante(char *alfa, char *mex, char *mancante);
+
+int contaDoppie(char *string);
+
+char *checkSpeciale(char *mex, char *speciale);
+
+void shift(char *string, int pos, char *speciale);
+
+void checkDecodeMsg(char *string);
