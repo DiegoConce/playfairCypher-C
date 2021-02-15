@@ -34,23 +34,7 @@ void eliminaSpazi(char *string) {
     string[count] = '\0';
 }
 
-void generaMat(char matrice[][5], char *chiave, char *alfa) {
-    eliminaSpazi(chiave);
-    eliminaRipetizioni(chiave);
-    char *newAlpha = calloc(26 + strlen(chiave), sizeof(char));
-    strcpy(newAlpha, chiave);
-    eliminaRipetizioni(strcat(newAlpha, alfa));
-    int z = 0;
-    for (int k = 0; k < 5; k++) {
-        for (int j = 0; j < 5; j++) {
-            matrice[k][j] = newAlpha[z];
-            z++;
-        }
-    }
 
-    free(newAlpha);
-    newAlpha = NULL;
-}
 
 void checkMancante(char *alfa, char *mex, char *mancante) {
     int n = strlen(mex);
@@ -106,3 +90,5 @@ void checkDecodeMsg(char *string) {
         exit(-1);
     }
 }
+
+

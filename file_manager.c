@@ -2,15 +2,27 @@
 #include <libgen.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "file_manager.h"
+
 
 char *createPfPath(char *dirname, char *fname) {
     char *name = calloc(strlen(dirname) + strlen(basename(fname)) + 4, sizeof(char));
     strcpy(name, dirname);
     strcat(name, "/");
     strcat(name, basename(fname));
-    // remove_ext(name);
+    removeExtension(name);
     strcat(name, ".pf");
     return name;
+}
+
+void removeExtension(char *name) {
+    char *end = name + strlen(name);
+    while (end > name && *end != '.' && *end!= '\\' && *end != '/') {
+        --end;
+    }
+    if ((end > name && *end == '.') && (*(end - 1) != '\\' && *(end - 1) != '/')) {
+        *end = '\0';
+    }
 }
 
 char *createDecPath(char *dirname, char *fname) {
@@ -18,19 +30,14 @@ char *createDecPath(char *dirname, char *fname) {
     strcpy(name, dirname);
     strcat(name, "/");
     strcat(name, basename(fname));
-    // remove_ext(name);
+    removeExtension(name);
     strcat(name, ".dec");
     return name;
 }
 
-void removeExtension(char *name) {
-
-}
 
 void saveFile(char *mex, char *dirname, char *fname, _Bool codifica) {
-    //int j = strlen(dirname);
     char *dirpath;
-
     if (codifica) {
         dirpath = createPfPath(dirname, fname);
     } else {
@@ -45,7 +52,6 @@ void saveFile(char *mex, char *dirname, char *fname, _Bool codifica) {
     }
     fputs(mex, fout);
     fclose(fout);
-    //dirpath[j] = '\0';
 }
 
 

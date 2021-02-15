@@ -10,8 +10,6 @@ void eliminaRipetizioni(char *string);
 
 void eliminaSpazi(char string[]);
 
-void generaMat(char matrice[][5], char *chiave, char *alfa);
-
 void checkMancante(char *alfa, char *mex, char *mancante);
 
 int contaDoppie(char *string);

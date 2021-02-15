@@ -3,7 +3,9 @@
 #include <string.h>
 #include "driver.h"
 #include "utils.h"
-#include "playfair.h"
+#include "matrix_utils.h"
+#include "playfair_decode.h"
+#include "playfair_encode.h"
 #include "file_manager.h"
 
 char mat[5][5];
@@ -39,9 +41,7 @@ char *elaborateData(char *mex, char *mancante, char *special, char *alfa, _Bool 
 }
 
 void validateKeyfile(char *alfa, char *mancante, char *special, char *chiave) {
-
     eliminaRipetizioni(alfa);
-
     if (chiave == NULL) {
         printf("Keyfile non valido");
         exit(-1);
