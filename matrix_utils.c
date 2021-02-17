@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "utils.h"
+#include "matrix_utils.h"
 
 void generaMat(char matrice[][5], char *chiave, char *alfa) {
     eliminaSpazi(chiave);

@@ -1,12 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include "driver.h"
-#include "utils.h"
-#include "matrix_utils.h"
-#include "playfair_decode.h"
 #include "playfair_encode.h"
+#include "playfair_decode.h"
 #include "file_manager.h"
+#include "matrix_utils.h"
+#include "utils.h"
+#include "validate.h"
 
 char mat[5][5];
 
@@ -29,7 +28,7 @@ void setUpData(int argc, char **argv, _Bool codifica) {
 }
 
 char *elaborateData(char *mex, char *mancante, char *special, char *alfa, _Bool codifica) {
-
+    validateMsg(mex);
     if (codifica) {
         return encodeMsg(mat, prepareMsg(mex, mancante, special, alfa));
     } else {
@@ -37,17 +36,5 @@ char *elaborateData(char *mex, char *mancante, char *special, char *alfa, _Bool 
         checkDecodeMsg(mex);
         return decodeMsg(mat, mex);
     }
-
 }
 
-void validateKeyfile(char *alfa, char *mancante, char *special, char *chiave) {
-    eliminaRipetizioni(alfa);
-    if (chiave == NULL) {
-        printf("Keyfile non valido");
-        exit(-1);
-    }
-    if (!(strlen(alfa) == 25 && strlen(mancante) == 1 && strlen(special) == 1)) {
-        printf("Keyfile non valido");
-        exit(-1);
-    }
-}

@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
-#include "matrix_utils.h"
 #include "rules_encode.h"
+#include "matrix_utils.h"
 
 
 void encodePair(char mat[][5], char first, char second, char *out) {

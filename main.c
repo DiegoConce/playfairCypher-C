@@ -18,12 +18,13 @@ int main(int argc, char *argv[]) {
 
     if (strcmp(argv[1], "encode") == 0) {
         setUpData(argc, argv, true);
-        printf("Tutt ok \n");
+        printf("Operazione encode eseguita con successo\n");
         return 0;
     }
 
     if (strcmp(argv[1], "decode") == 0) {
         setUpData(argc, argv, false);
+        printf("Operazione decode eseguita con successo\n");
         return 0;
     }
 

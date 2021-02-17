@@ -8,4 +8,3 @@ void setUpData(int argc, char **argv, _Bool codifica);
 
 char *elaborateData(char *mex, char *mancante, char *special, char *alfa, _Bool codifica);
 
-void validateKeyfile(char *alfa, char *mancante, char *special, char *chiave);

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "utils.h"
@@ -84,11 +83,5 @@ char *checkSpeciale(char *mex, char *speciale) {
     return out;
 }
 
-void checkDecodeMsg(char *string) {
-    if (strlen(string) % 2 != 0) {
-        printf("Messaggio impossibile da decifrare");
-        exit(-1);
-    }
-}
 
 

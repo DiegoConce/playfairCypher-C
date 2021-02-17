@@ -1,7 +1,7 @@
 #include <string.h>
 #include "rules_decode.h"
 #include "matrix_utils.h"
-#include "playfair_decode.h"
+
 
 void decodeRules(char mat[][5], int *col, int *row, char *out) {
     if (col[0] == col[1]) {

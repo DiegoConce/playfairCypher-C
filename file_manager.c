@@ -1,9 +1,8 @@
 #include <string.h>
-#include <libgen.h>
 #include <stdlib.h>
+#include <libgen.h>
 #include <stdio.h>
 #include "file_manager.h"
-
 
 char *createPfPath(char *dirname, char *fname) {
     char *name = calloc(strlen(dirname) + strlen(basename(fname)) + 4, sizeof(char));
@@ -12,6 +11,16 @@ char *createPfPath(char *dirname, char *fname) {
     strcat(name, basename(fname));
     removeExtension(name);
     strcat(name, ".pf");
+    return name;
+}
+
+char *createDecPath(char *dirname, char *fname) {
+    char *name = calloc(strlen(dirname) + strlen(basename(fname)) + 4, sizeof(char));
+    strcpy(name, dirname);
+    strcat(name, "/");
+    strcat(name, basename(fname));
+    removeExtension(name);
+    strcat(name, ".dec");
     return name;
 }
 
@@ -25,17 +34,6 @@ void removeExtension(char *name) {
     }
 }
 
-char *createDecPath(char *dirname, char *fname) {
-    char *name = calloc(strlen(dirname) + strlen(basename(fname)) + 4, sizeof(char));
-    strcpy(name, dirname);
-    strcat(name, "/");
-    strcat(name, basename(fname));
-    removeExtension(name);
-    strcat(name, ".dec");
-    return name;
-}
-
-
 void saveFile(char *mex, char *dirname, char *fname, _Bool codifica) {
     char *dirpath;
     if (codifica) {
@@ -47,7 +45,7 @@ void saveFile(char *mex, char *dirname, char *fname, _Bool codifica) {
     FILE *fout;
     fout = fopen(dirpath, "w");
     if (fout == NULL) {
-        printf("File non salvato correttamente");
+        printf("File non salvato correttamente\n");
         exit(-1);
     }
     fputs(mex, fout);
@@ -60,7 +58,7 @@ char *readFiles(char *fname) {
     FILE *fin;
     fin = fopen(fname, "r");
     if (fin == NULL) {
-        printf("Impossibile aprire il file: %s", fname);
+        printf("Impossibile aprire il file: %s\n", fname);
         exit(-1);
     }
 
@@ -69,7 +67,7 @@ char *readFiles(char *fname) {
     fseek(fin, 0L, SEEK_SET);
     char *buffer = calloc(numbytes + 1, sizeof(char));
     if (buffer == NULL) {
-        printf("Errore nella lettura del file: %s", fname);
+        printf("Errore nella lettura del file: %s\n", fname);
         exit(-1);
     }
     fread(buffer, sizeof(char), numbytes, fin);

@@ -16,6 +16,3 @@ int contaDoppie(char *string);
 
 char *checkSpeciale(char *mex, char *speciale);
 
-void shift(char *string, int pos, char *speciale);
-
-void checkDecodeMsg(char *string);
