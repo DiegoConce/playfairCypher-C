@@ -3,12 +3,12 @@
 #include "utils.h"
 
 char *prepareMsg(char *mex, char *mancante, char *speciale, char *alfa) {
-    eliminaSpazi(mex);
+    removeSpaces(mex);
     checkMancante(alfa, mex, mancante);
     return checkSpeciale(mex, speciale);
 }
 
-void eliminaRipetizioni(char *string) {
+void removeDoubles(char *string) {
     int n = strlen(string);
     int k;
 
@@ -23,7 +23,7 @@ void eliminaRipetizioni(char *string) {
     }
 }
 
-void eliminaSpazi(char *string) {
+void removeSpaces(char *string) {
     int count = 0;
     for (int i = 0; i < strlen(string); i++) {
         if (string[i] != ' ') {
@@ -44,7 +44,7 @@ void checkMancante(char *alfa, char *mex, char *mancante) {
     }
 }
 
-int contaDoppie(char *string) {
+int countDoubles(char *string) {
     int n = strlen(string);
     int count = 0;
     for (int i = 1; i < n; i += 2) {
@@ -57,10 +57,10 @@ int contaDoppie(char *string) {
 
 char *checkSpeciale(char *mex, char *speciale) {
     int n = strlen(mex);
-    int resultLen = n + contaDoppie(mex) + 2;
+    int resultLen = n + countDoubles(mex) + 2;
     char *out = calloc(resultLen, sizeof(char));
 
-    if (contaDoppie(mex) == 0 && (n % 2) != 0) {
+    if (countDoubles(mex) == 0 && (n % 2) != 0) {
         strcpy(out, mex);
         strncat(out, speciale, 1);
         return out;

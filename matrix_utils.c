@@ -4,11 +4,11 @@
 #include "matrix_utils.h"
 
 void generaMat(char matrice[][5], char *chiave, char *alfa) {
-    eliminaSpazi(chiave);
-    eliminaRipetizioni(chiave);
+    removeSpaces(chiave);
+    removeDoubles(chiave);
     char *newAlpha = calloc(26 + strlen(chiave), sizeof(char));
     strcpy(newAlpha, chiave);
-    eliminaRipetizioni(strcat(newAlpha, alfa));
+    removeDoubles(strcat(newAlpha, alfa));
     int z = 0;
     for (int k = 0; k < 5; k++) {
         for (int j = 0; j < 5; j++) {

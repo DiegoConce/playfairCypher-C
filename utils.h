@@ -6,13 +6,13 @@
 
 char *prepareMsg(char *mex, char *mancante, char *speciale, char *alfa);
 
-void eliminaRipetizioni(char *string);
+void removeDoubles(char *string);
 
-void eliminaSpazi(char string[]);
+void removeSpaces(char *string);
 
 void checkMancante(char *alfa, char *mex, char *mancante);
 
-int contaDoppie(char *string);
+int countDoubles(char *string);
 
 char *checkSpeciale(char *mex, char *speciale);
 

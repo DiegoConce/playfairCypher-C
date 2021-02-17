@@ -17,6 +17,6 @@ void checkAlphaChars(char *str);
 
 int char_index(char c);
 
-void checkKey(char *str);
+void check_key(char *str);
 
 void checkDecodeMsg(char *str);

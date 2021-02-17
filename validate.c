@@ -3,20 +3,19 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "utils.h"
-#import "validate.h"
+#include "validate.h"
 
 void validateKeyfile(char *alfa, char *mancante, char *special, char *chiave) {
-    eliminaRipetizioni(alfa);
+    removeDoubles(alfa);
     checkAlpha(alfa);
     check_and_convert_singleChar(mancante);
     check_and_convert_singleChar(special);
-    checkKey(chiave);
+    check_key(chiave);
 }
 
 void validateMsg(char *str) {
     if (strlen(str) == 0) {
-        printf("At least 1 char for message is required!\n"
-               "Unable to read the message to encode/decode\n");
+        printf("Il messaggio da cifrare/decifrare deve avere almeno 1 carattere!\n");
         exit(-1);
     }
     upperCase(str);
@@ -25,7 +24,7 @@ void validateMsg(char *str) {
 void checkAlpha(char *str) {
     int i = strlen(str);
     if (i != 25) {
-        printf("Illegal number of elements in the alphabet! Expected 25 are %d", i);
+        printf("L'alfabete deve essere di 25 caratteri diversi, ne hai inseriti: %d", i);
         exit(-1);
     }
     checkAlphaChars(str);
@@ -34,9 +33,8 @@ void checkAlpha(char *str) {
 
 void check_and_convert_singleChar(char *str) {
     if (strlen(str) != 1) {
-        printf("%s must be a single char!", str);
+        printf("%s deve essere soltanto 1 carattere!", str);
         exit(-1);
-        //return -1
     }
     upperCase(str);
 }
@@ -55,7 +53,7 @@ void upperCase(char *str) {
 void checkAlphaChars(char *str) {
     for (int i = 0; i < 25; i++) {
         if ((char_index(str[i]) < 0) || (char_index(str[i]) > 25)) {
-            printf("Illegal char (%c) in the alphabet at position %d!\n", str[i], i);
+            printf("Carattere non valido (%c) nell'alfabeto alla posizione %d!\n", str[i], i);
             exit(-1);
         }
     }
@@ -65,10 +63,10 @@ int char_index(char c) {
     return toupper(c) - 'A';
 }
 
-void checkKey(char *str) {
+void check_key(char *str) {
     if (str == NULL) {
-        printf("At least 1 char for key is required!\n"
-               "keyfile not valid\n");
+        printf("Almeno un carattere richiesto per la chiave!\n"
+               "Keyfile non valido\n");
         exit(-1);
     }
     upperCase(str);

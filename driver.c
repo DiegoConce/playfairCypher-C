@@ -32,7 +32,7 @@ char *elaborateData(char *mex, char *mancante, char *special, char *alfa, _Bool 
     if (codifica) {
         return encodeMsg(mat, prepareMsg(mex, mancante, special, alfa));
     } else {
-        eliminaSpazi(mex);
+        removeSpaces(mex);
         checkDecodeMsg(mex);
         return decodeMsg(mat, mex);
     }
